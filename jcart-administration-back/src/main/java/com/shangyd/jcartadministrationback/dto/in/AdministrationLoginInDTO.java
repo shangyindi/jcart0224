@@ -1,6 +1,6 @@
 package com.shangyd.jcartadministrationback.dto.in;
 
-public class AdministrationRequestDTO {
+public class AdministrationLoginInDTO {
 
     private String username;
 

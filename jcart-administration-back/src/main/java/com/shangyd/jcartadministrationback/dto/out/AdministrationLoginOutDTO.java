@@ -1,6 +1,6 @@
 package com.shangyd.jcartadministrationback.dto.out;
 
-public class AdministrationResponseDTO {
+public class AdministrationLoginOutDTO {
     private String username;
 
     private String password;
