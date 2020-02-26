@@ -1,8 +1,8 @@
 package com.shangyd.jcartadministrationback.dto.in;
 
-public class ProductCreateOutDTO {
+import java.util.List;
 
-    private Integer productId;
+public class ProductCreateInDTO {
 
     private String productCode;
 
@@ -18,12 +18,41 @@ public class ProductCreateOutDTO {
 
     private String mainPicUrl;
 
-    public Integer getProductId() {
-        return productId;
+    private Integer rewordPoints;
+    private Integer sortOrder;
+    private String description;
+    private List<String> otherPicUrls;
+
+    public Integer getRewordPoints() {
+        return rewordPoints;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setRewordPoints(Integer rewordPoints) {
+        this.rewordPoints = rewordPoints;
+    }
+
+    public Integer getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getOtherPicUrls() {
+        return otherPicUrls;
+    }
+
+    public void setOtherPicUrls(List<String> otherPicUrls) {
+        this.otherPicUrls = otherPicUrls;
     }
 
     public String getProductCode() {

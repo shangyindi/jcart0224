@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/image")
+@RequestMapping("/image/")
 public class ImgController {
 
     @PostMapping("/upload")
