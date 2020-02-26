@@ -35,10 +35,10 @@
       reword_points, sort_order)
     values (#{productId,jdbcType=INTEGER}, #{productCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
       #{productAbstract,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, 
-      #{stockQuantity,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{mainPicUrl,jdbcType=VARCHAR}, 
-      #{rewordPoints,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.shangyd.jcartadministrationback.po.Product">
+      #{stockQuantity,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{mainPicUrl,jdbcType=VARCHAR},
+  #{rewordPoints,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER})
+</insert>
+  <insert id="insertSelective" parameterType="com.shangyd.jcartadministrationback.po.Product" useGeneratedKeys="true" keyProperty="productId">
     insert into jcart_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="productId != null">
