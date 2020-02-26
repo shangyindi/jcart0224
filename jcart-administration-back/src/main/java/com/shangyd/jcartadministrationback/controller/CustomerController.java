@@ -14,8 +14,8 @@ public class CustomerController {
      * @param customerId
      * @return
      */
-    @GetMapping("/getlist")
-    public PageOutInfo<CustomerListOutDTO> getList(@RequestParam Integer customerId){
+    @GetMapping("/search")
+    public PageOutInfo<CustomerListOutDTO> search(@RequestParam Integer customerId){
         return null;
     }
 

@@ -14,8 +14,8 @@ public class ProductController {
      * @param pageNum
      * @return
      */
-    @GetMapping("/getlist")
-    public PageOutInfo<ProductListOutDTO> getList(@RequestParam Integer pageNum){
+    @GetMapping("/search")
+    public PageOutInfo<ProductListOutDTO> search(@RequestParam Integer pageNum){
         return null;
     }
 
@@ -28,6 +28,6 @@ public class ProductController {
     public int create(@RequestBody ProductCreateOutDTO productCreateOutDTO){
         return 0;
     }
-    
+
 
 }
