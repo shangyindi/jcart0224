@@ -38,6 +38,7 @@ public class ProductController {
 
     @PostMapping("/upload")
     public void upload(@RequestBody ProductUploadInDTO productUploadInDTO){
-
+        productService.upload(productUploadInDTO);
     }
+
 }

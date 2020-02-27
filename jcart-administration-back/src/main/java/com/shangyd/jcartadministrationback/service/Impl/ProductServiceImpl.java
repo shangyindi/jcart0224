@@ -7,6 +7,7 @@ import com.shangyd.jcartadministrationback.dao.ProductDetailMapper;
 import com.shangyd.jcartadministrationback.dao.ProductMapper;
 import com.shangyd.jcartadministrationback.dto.in.ProductCreateInDTO;
 import com.shangyd.jcartadministrationback.dto.in.ProductSearchInDTO;
+import com.shangyd.jcartadministrationback.dto.in.ProductUploadInDTO;
 import com.shangyd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.shangyd.jcartadministrationback.po.Product;
 import com.shangyd.jcartadministrationback.po.ProductDetail;
@@ -59,6 +60,31 @@ public class ProductServiceImpl implements ProductService {
         PageHelper.startPage(pageNum, 10);
         Page<ProductListOutDTO> page = productMapper.search();
         return page;
+    }
+
+    @Override
+    @Transactional
+    public void upload(ProductUploadInDTO productUploadInDTO) {
+        Product product = new Product();
+        product.setProductName(productUploadInDTO.getProductName());
+        product.setProductId(productUploadInDTO.getProductId());
+        product.setPrice(productUploadInDTO.getPrice());
+        product.setDiscount(productUploadInDTO.getDiscount());
+        product.setMainPicUrl(productUploadInDTO.getMainPicUrl());
+        product.setRewordPoints(productUploadInDTO.getRewordPoints());
+        product.setSortOrder(productUploadInDTO.getSortOrder());
+        product.setStatus(productUploadInDTO.getStatus());
+        product.setStockQuantity(productUploadInDTO.getStockQuantity());
+        String description = productUploadInDTO.getDescription();
+        String substring = description.substring(0, Math.min(100, description.length()));
+        product.setProductAbstract(substring);
+        productMapper.updateByPrimaryKeySelective(product);
+        ProductDetail productDetail = new ProductDetail();
+        List<String> otherPicUrls = productUploadInDTO.getOtherPicUrls();
+        productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
+        productDetail.setDescription(productDetail.getDescription());
+        productDetail.setProductId(productDetail.getProductId());
+        productDetailMapper.updateByPrimaryKeySelective(productDetail);
     }
 
 }
