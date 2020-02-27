@@ -41,4 +41,8 @@ public class ProductController {
         productService.upload(productUploadInDTO);
     }
 
+    @DeleteMapping("/delete")
+    public void delete(Integer productId){
+        productService.delete(productId);
+    }
 }

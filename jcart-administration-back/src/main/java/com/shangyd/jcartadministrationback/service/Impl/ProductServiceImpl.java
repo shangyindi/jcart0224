@@ -87,4 +87,10 @@ public class ProductServiceImpl implements ProductService {
         productDetailMapper.updateByPrimaryKeySelective(productDetail);
     }
 
+    @Override
+    public void delete(Integer productId) {
+        productMapper.deleteByPrimaryKey(productId);
+        productDetailMapper.deleteByPrimaryKey(productId);
+    }
+
 }
