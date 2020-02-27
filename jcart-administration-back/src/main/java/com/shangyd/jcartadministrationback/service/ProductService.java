@@ -15,4 +15,6 @@ public interface ProductService {
     void upload(ProductUploadInDTO productUploadInDTO);
 
     void delete(Integer productId);
+
+    void batchdelete(List<Integer> productIds);
 }

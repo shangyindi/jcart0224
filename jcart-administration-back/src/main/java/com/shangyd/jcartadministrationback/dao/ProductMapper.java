@@ -3,7 +3,10 @@ package com.shangyd.jcartadministrationback.dao;
 import com.github.pagehelper.Page;
 import com.shangyd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.shangyd.jcartadministrationback.po.Product;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ProductMapper {
@@ -20,4 +23,6 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     Page<ProductListOutDTO> search();
+
+    void batchdelete(@Param("productIds") List<Integer> productIds);
 }

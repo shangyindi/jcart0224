@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
+@CrossOrigin
 public class ProductController {
 
     @Autowired
@@ -41,8 +42,13 @@ public class ProductController {
         productService.upload(productUploadInDTO);
     }
 
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     public void delete(Integer productId){
         productService.delete(productId);
+    }
+
+    @PostMapping("/batchdelete")
+    public void batchdelete(@RequestBody List<Integer> productIds){
+        productService.batchdelete(productIds);
     }
 }

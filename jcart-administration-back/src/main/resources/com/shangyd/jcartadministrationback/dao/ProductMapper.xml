@@ -174,4 +174,12 @@
     <include refid="Base_Column_List" />
     from jcart_product
   </select>
+  <delete id="batchdelete">
+    delete from jcart_product
+    where product_id in
+    <foreach item="item" index="index" collection="productIds"
+             open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
 </mapper>
