@@ -2,7 +2,7 @@ package com.shangyd.jcartadministrationback.controller;
 
 import com.shangyd.jcartadministrationback.dto.in.CustomerCreateInDTO;
 import com.shangyd.jcartadministrationback.dto.out.CustomerListOutDTO;
-import com.shangyd.jcartadministrationback.dto.out.PageOutInfo;
+import com.shangyd.jcartadministrationback.dto.out.PageOutDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +15,7 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/search")
-    public PageOutInfo<CustomerListOutDTO> search(@RequestParam Integer customerId){
+    public PageOutDTO<CustomerListOutDTO> search(@RequestParam Integer customerId){
         return null;
     }
 

@@ -1,9 +1,13 @@
 package com.shangyd.jcartadministrationback.service.Impl;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.shangyd.jcartadministrationback.dao.ProductDetailMapper;
 import com.shangyd.jcartadministrationback.dao.ProductMapper;
 import com.shangyd.jcartadministrationback.dto.in.ProductCreateInDTO;
+import com.shangyd.jcartadministrationback.dto.in.ProductSearchInDTO;
+import com.shangyd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.shangyd.jcartadministrationback.po.Product;
 import com.shangyd.jcartadministrationback.po.ProductDetail;
 import com.shangyd.jcartadministrationback.service.ProductService;
@@ -48,4 +52,13 @@ public class ProductServiceImpl implements ProductService {
         productDetailMapper.insertSelective(productDetail);
         return productId;
     }
+
+    @Override
+    @Transactional
+    public Page<ProductListOutDTO> search(Integer pageNum) {
+        PageHelper.startPage(pageNum, 10);
+        Page<ProductListOutDTO> page = productMapper.search();
+        return page;
+    }
+
 }

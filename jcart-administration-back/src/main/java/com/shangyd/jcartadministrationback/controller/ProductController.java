@@ -1,12 +1,16 @@
 package com.shangyd.jcartadministrationback.controller;
 
+import com.github.pagehelper.Page;
 import com.shangyd.jcartadministrationback.dto.in.ProductCreateInDTO;
+import com.shangyd.jcartadministrationback.dto.in.ProductSearchInDTO;
 import com.shangyd.jcartadministrationback.dto.in.ProductUploadInDTO;
-import com.shangyd.jcartadministrationback.dto.out.PageOutInfo;
+import com.shangyd.jcartadministrationback.dto.out.PageOutDTO;
 import com.shangyd.jcartadministrationback.dto.out.ProductListOutDTO;
 import com.shangyd.jcartadministrationback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/product")
@@ -16,8 +20,14 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/search")
-    public PageOutInfo<ProductListOutDTO> search(@RequestParam Integer pageNum){
-        return null;
+    public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO, @RequestParam(required = false,defaultValue = "1") Integer pageNum){
+        Page<ProductListOutDTO> page = productService.search(pageNum);
+        PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(page);
+        return pageOutDTO;
     }
 
     @PostMapping("/create")

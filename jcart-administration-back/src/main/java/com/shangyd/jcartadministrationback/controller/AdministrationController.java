@@ -6,7 +6,7 @@ import com.shangyd.jcartadministrationback.dto.in.AdministrationResetPwdInDTO;
 import com.shangyd.jcartadministrationback.dto.in.AdministrationUploadInDTO;
 import com.shangyd.jcartadministrationback.dto.out.AdministrationListOutDTO;
 import com.shangyd.jcartadministrationback.dto.out.AdministrationShowOutDTO;
-import com.shangyd.jcartadministrationback.dto.out.PageOutInfo;
+import com.shangyd.jcartadministrationback.dto.out.PageOutDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +15,7 @@ public class AdministrationController {
 
     /**
      *
-     * @param administrationCreateInDTO
+..../*-am administrationCreateInDTO
      * @return
      */
     @PostMapping("/create")
@@ -67,7 +67,7 @@ public class AdministrationController {
      * @return
      */
     @GetMapping("/getlist")
-    public PageOutInfo<AdministrationListOutDTO> getList(@RequestParam Integer pageNum){
+    public PageOutDTO<AdministrationListOutDTO> getList(@RequestParam Integer pageNum){
         return  null;
     }
 
