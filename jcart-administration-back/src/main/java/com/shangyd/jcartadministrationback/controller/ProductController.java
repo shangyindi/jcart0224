@@ -6,6 +6,7 @@ import com.shangyd.jcartadministrationback.dto.in.ProductSearchInDTO;
 import com.shangyd.jcartadministrationback.dto.in.ProductUploadInDTO;
 import com.shangyd.jcartadministrationback.dto.out.PageOutDTO;
 import com.shangyd.jcartadministrationback.dto.out.ProductListOutDTO;
+import com.shangyd.jcartadministrationback.dto.out.ProductShowOutDTO;
 import com.shangyd.jcartadministrationback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,12 +44,18 @@ public class ProductController {
     }
 
     @PostMapping("/delete")
-    public void delete(Integer productId){
+    public void delete(@RequestParam Integer productId){
         productService.delete(productId);
     }
 
     @PostMapping("/batchdelete")
     public void batchdelete(@RequestBody List<Integer> productIds){
         productService.batchdelete(productIds);
+    }
+
+    @GetMapping("/getById")
+    public ProductShowOutDTO getById(@RequestParam Integer productId){
+        ProductShowOutDTO productShowOutDTO = productService.getById(productId);
+        return productShowOutDTO;
     }
 }

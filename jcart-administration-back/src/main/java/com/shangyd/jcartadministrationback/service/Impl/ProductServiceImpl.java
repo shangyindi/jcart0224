@@ -9,6 +9,7 @@ import com.shangyd.jcartadministrationback.dto.in.ProductCreateInDTO;
 import com.shangyd.jcartadministrationback.dto.in.ProductSearchInDTO;
 import com.shangyd.jcartadministrationback.dto.in.ProductUploadInDTO;
 import com.shangyd.jcartadministrationback.dto.out.ProductListOutDTO;
+import com.shangyd.jcartadministrationback.dto.out.ProductShowOutDTO;
 import com.shangyd.jcartadministrationback.po.Product;
 import com.shangyd.jcartadministrationback.po.ProductDetail;
 import com.shangyd.jcartadministrationback.service.ProductService;
@@ -26,6 +27,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductDetailMapper productDetailMapper;
+
 
     @Override
     @Transactional
@@ -99,6 +101,26 @@ public class ProductServiceImpl implements ProductService {
     public void batchdelete(List<Integer> productIds) {
         productMapper.batchdelete(productIds);
         productDetailMapper.batchdelete(productIds);
+    }
+
+    @Override
+    @Transactional
+    public ProductShowOutDTO getById(Integer productId) {
+        ProductShowOutDTO productShowOutDTO= new ProductShowOutDTO();
+        Product product = productMapper.selectByPrimaryKey(productId);
+        ProductDetail productDetail = productDetailMapper.selectByPrimaryKey(productId);
+        productShowOutDTO.setDescription(productDetail.getDescription());
+        productShowOutDTO.setMainPicUrl(product.getMainPicUrl());
+        productShowOutDTO.setPrice(product.getPrice());
+        productShowOutDTO.setProductCode(product.getProductCode());
+        productShowOutDTO.setProductName(product.getProductName());
+        productShowOutDTO.setStatus(product.getStatus());
+        productShowOutDTO.setStockQuantity(product.getStockQuantity());
+        productShowOutDTO.setDiscount(product.getDiscount());
+        String otherPicUrls = productDetail.getOtherPicUrls();
+        List<String> strings = JSON.parseArray(otherPicUrls, String.class);
+        productShowOutDTO.setOtherPicUrls(strings);
+        return productShowOutDTO;
     }
 
 }
