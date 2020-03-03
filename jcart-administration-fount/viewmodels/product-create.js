@@ -9,12 +9,16 @@ var app = new Vue({
         rewordPoints: '',
         sortOrder: '',
         description: '',
-        selectedStatus: 0,
+        selectedStatus: '',
         statuses: [{
             value: 0, label: '下架',
+        }, {
             value: 1, label: '上架',
+        },{
             value: 2, label: '待审核',
-        }]
+        }],
+        mainPicUrl:''
+
     },
     methods: {
         handleCreateClick() {
@@ -32,7 +36,9 @@ var app = new Vue({
                     rewordPoints: this.rewordPoints,
                     sortOrder: this.sortOrder,
                     description: this.description,
-                    status: this.status
+                    status: this.selectedStatus,
+                    selectStatus: this.selectStatus,
+                    mainPicUrl:this.mainPicUrl
                 }
             })
                 .then(function (response) {
