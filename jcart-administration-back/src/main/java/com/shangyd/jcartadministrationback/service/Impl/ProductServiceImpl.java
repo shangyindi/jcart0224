@@ -41,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
         product.setRewordPoints(productCreateInDTO.getRewordPoints());
         product.setSortOrder(productCreateInDTO.getSortOrder());
         product.setStatus(productCreateInDTO.getStatus());
+        product.setProductAbstract(productCreateInDTO.getProductAbstract());
         product.setStockQuantity(productCreateInDTO.getStockQuantity());
         String description = productCreateInDTO.getDescription();
         String substring = description.substring(0, Math.min(100, description.length()));
