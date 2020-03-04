@@ -126,4 +126,10 @@
       avatar_url = #{avatarUrl,jdbcType=VARCHAR}
     where administrator_id = #{administratorId,jdbcType=INTEGER}
   </update>
+  <select id="getByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_administrator
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
 </mapper>
