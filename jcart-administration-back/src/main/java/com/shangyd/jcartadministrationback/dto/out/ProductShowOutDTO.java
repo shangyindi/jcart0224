@@ -21,6 +21,19 @@ public class ProductShowOutDTO {
 
     private String description;
     private List<String> otherPicUrls;
+    private Integer rewordPoints;
+
+    public String getProductAbstract() {
+        return productAbstract;
+    }
+
+    public void setProductAbstract(String productAbstract) {
+        this.productAbstract = productAbstract;
+    }
+
+    private String productAbstract;
+
+    private Byte sortOrder;
 
     public Integer getProductId() {
         return productId;
@@ -100,5 +113,21 @@ public class ProductShowOutDTO {
 
     public void setOtherPicUrls(List<String> otherPicUrls) {
         this.otherPicUrls = otherPicUrls;
+    }
+
+    public Integer getRewordPoints() {
+        return rewordPoints;
+    }
+
+    public void setRewordPoints(Integer rewordPoints) {
+        this.rewordPoints = rewordPoints;
+    }
+
+    public Byte getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(Byte sortOrder) {
+        this.sortOrder = sortOrder;
     }
 }

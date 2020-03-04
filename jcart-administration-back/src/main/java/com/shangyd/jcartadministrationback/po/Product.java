@@ -23,9 +23,7 @@ public class Product implements Serializable {
 
     private Integer rewordPoints;
 
-    private Integer sortOrder;
-
-    private static final long serialVersionUID = 1L;
+    private Byte sortOrder;
 
     public Integer getProductId() {
         return productId;
@@ -40,7 +38,7 @@ public class Product implements Serializable {
     }
 
     public void setProductCode(String productCode) {
-        this.productCode = productCode == null ? null : productCode.trim();
+        this.productCode = productCode;
     }
 
     public String getProductName() {
@@ -48,7 +46,7 @@ public class Product implements Serializable {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
+        this.productName = productName;
     }
 
     public String getProductAbstract() {
@@ -56,7 +54,7 @@ public class Product implements Serializable {
     }
 
     public void setProductAbstract(String productAbstract) {
-        this.productAbstract = productAbstract == null ? null : productAbstract.trim();
+        this.productAbstract = productAbstract;
     }
 
     public Double getPrice() {
@@ -96,7 +94,7 @@ public class Product implements Serializable {
     }
 
     public void setMainPicUrl(String mainPicUrl) {
-        this.mainPicUrl = mainPicUrl == null ? null : mainPicUrl.trim();
+        this.mainPicUrl = mainPicUrl;
     }
 
     public Integer getRewordPoints() {
@@ -107,11 +105,11 @@ public class Product implements Serializable {
         this.rewordPoints = rewordPoints;
     }
 
-    public Integer getSortOrder() {
+    public Byte getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(Integer sortOrder) {
+    public void setSortOrder(Byte sortOrder) {
         this.sortOrder = sortOrder;
     }
 }

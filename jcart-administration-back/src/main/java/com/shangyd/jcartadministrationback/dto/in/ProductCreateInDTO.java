@@ -19,7 +19,7 @@ public class ProductCreateInDTO {
     private String mainPicUrl;
 
     private Integer rewordPoints;
-    private Integer sortOrder;
+    private Byte sortOrder;
     private String description;
     private List<String> otherPicUrls;
     private String productAbstract;
@@ -32,11 +32,11 @@ public class ProductCreateInDTO {
         this.rewordPoints = rewordPoints;
     }
 
-    public Integer getSortOrder() {
+    public Byte getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(Integer sortOrder) {
+    public void setSortOrder(Byte sortOrder) {
         this.sortOrder = sortOrder;
     }
 

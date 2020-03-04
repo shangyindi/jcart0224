@@ -113,9 +113,13 @@ public class ProductServiceImpl implements ProductService {
         productShowOutDTO.setDescription(productDetail.getDescription());
         productShowOutDTO.setMainPicUrl(product.getMainPicUrl());
         productShowOutDTO.setPrice(product.getPrice());
+        productShowOutDTO.setProductId(product.getProductId());
         productShowOutDTO.setProductCode(product.getProductCode());
         productShowOutDTO.setProductName(product.getProductName());
+        productShowOutDTO.setProductAbstract(product.getProductAbstract());
         productShowOutDTO.setStatus(product.getStatus());
+        productShowOutDTO.setSortOrder(product.getSortOrder());
+        productShowOutDTO.setRewordPoints(product.getRewordPoints());
         productShowOutDTO.setStockQuantity(product.getStockQuantity());
         productShowOutDTO.setDiscount(product.getDiscount());
         String otherPicUrls = productDetail.getOtherPicUrls();

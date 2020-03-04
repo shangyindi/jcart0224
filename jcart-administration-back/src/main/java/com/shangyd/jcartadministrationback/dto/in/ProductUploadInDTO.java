@@ -12,7 +12,7 @@ public class ProductUploadInDTO {
     private Byte status;
     private String mainPicUrl;
     private Integer rewordPoints;
-    private Integer sortOrder;
+    private Byte sortOrder;
     private String description;
     private List<String> otherPicUrls;
 
@@ -80,11 +80,11 @@ public class ProductUploadInDTO {
         this.rewordPoints = rewordPoints;
     }
 
-    public Integer getSortOrder() {
+    public Byte getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(Integer sortOrder) {
+    public void setSortOrder(Byte sortOrder) {
         this.sortOrder = sortOrder;
     }
 
