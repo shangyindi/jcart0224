@@ -103,6 +103,28 @@ var app = new Vue({
             });
 
 
+        },updatedClick(){
+            axios.post('/product/update', {
+                productId: this.productId,
+                productName: this.productName,
+                price: this.price,
+                discount: this.discount,
+                stockQuantity: this.stockQuantity,
+                status: this.selectedStatus,
+                mainPicUrl: this.mainPicUrl,
+                rewordPoints: this.rewordPoints,
+                sortOrder: this.sortOrder,
+                productAbstract: this.productAbstract,
+                description: this.description,
+                otherPicUrls: this.otherPicUrls
+            })
+                .then(function (response) {
+                    console.log(response);
+                    alert('修改成功');
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
         getProductId(){
             axios.get('/product/getById',{

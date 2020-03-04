@@ -38,7 +38,7 @@ public class ProductController {
         return productId;
     }
 
-    @PostMapping("/upload")
+    @PostMapping("/update")
     public void upload(@RequestBody ProductUploadInDTO productUploadInDTO){
         productService.upload(productUploadInDTO);
     }

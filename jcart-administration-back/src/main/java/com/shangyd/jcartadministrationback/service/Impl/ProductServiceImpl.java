@@ -79,6 +79,7 @@ public class ProductServiceImpl implements ProductService {
         product.setStatus(productUploadInDTO.getStatus());
         product.setStockQuantity(productUploadInDTO.getStockQuantity());
         String description = productUploadInDTO.getDescription();
+        product.setProductAbstract(productUploadInDTO.getProductAbstract());
         String substring = description.substring(0, Math.min(100, description.length()));
         product.setProductAbstract(substring);
         productMapper.updateByPrimaryKeySelective(product);
