@@ -1,5 +1,6 @@
 package com.shangyd.jcartadministrationback;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,7 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 class JcartAdministrationBackApplicationTests {
 
     @Test
-    void contextLoads() {
+    public void aaa(){
+        String bcryptHashString = BCrypt.withDefaults().hashToString(10, "123456".toCharArray());
+
+        System.out.println(bcryptHashString);
     }
 
 }

@@ -140,12 +140,13 @@ var app = new Vue({
                 app.stockQuantity = product.stockQuantity;
                 app.selectedStatus = product.status;
                 app.rewordPoints = product.rewordPoints;
-                app.selectedsortOrder = product.sortOrder;
+                app.sortOrder = product.sortOrder;
                 app.mainPicUrl = product.mainPicUrl;
                 app.productAbstract = product.productAbstract;
                 app.otherPicUrls = product.otherPicUrls;
                 app.description = product.description;
                 app.productName = product.productName;
+                app.price=product.price;
             }).catch(function (error) {
                 console.log(error)
             })

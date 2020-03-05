@@ -1,25 +1,46 @@
 package com.shangyd.jcartadministrationback.dto.out;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class AdministrationListOutDTO {
 
-    private Integer administrationId;
-
     private String username;
-
-    private String password;
 
     private Byte status;
 
     private String email;
 
-    private String avatarUrl;
+    private Integer administratorId;
 
-    public Integer getAdministrationId() {
-        return administrationId;
+    public Integer getAdministratorId() {
+        return administratorId;
     }
 
-    public void setAdministrationId(Integer administrationId) {
-        this.administrationId = administrationId;
+    public void setAdministratorId(Integer administratorId) {
+        this.administratorId = administratorId;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    private String realName;
+
+    @DateTimeFormat(pattern = "yyyy-mm-dd HH:MM:SS")
+    private Date createTime;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getUsername() {
@@ -30,13 +51,6 @@ public class AdministrationListOutDTO {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public Byte getStatus() {
         return status;
@@ -54,11 +68,4 @@ public class AdministrationListOutDTO {
         this.email = email;
     }
 
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
 }

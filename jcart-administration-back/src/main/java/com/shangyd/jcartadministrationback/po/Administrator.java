@@ -1,5 +1,7 @@
 package com.shangyd.jcartadministrationback.po;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,6 +18,7 @@ public class Administrator implements Serializable {
 
     private Byte status;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
     private Date createTime;
 
     private String avatarUrl;

@@ -1,5 +1,6 @@
 package com.shangyd.jcartadministrationback.dao;
 
+import com.github.pagehelper.Page;
 import com.shangyd.jcartadministrationback.po.Administrator;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +19,6 @@ public interface AdministratorMapper {
     int updateByPrimaryKey(Administrator record);
 
     Administrator getByUsername(String username);
+
+    Page<Administrator> getSearch();
 }
