@@ -73,9 +73,10 @@ public class AdministrationController {
      * @param administrationId
      * @return
      */
-    @GetMapping("/getByadministrationId")
-    public AdministrationShowOutDTO getByadministrationId(@RequestParam("administrationId") Integer administrationId){
-        return null;
+    @GetMapping("/getByAdministrationId")
+    public AdministrationShowOutDTO getByAdministrationId(@RequestParam("administrationId") Integer administrationId){
+        AdministrationShowOutDTO administrationShowOutDTO = administrationService.getByAdministrationId(administrationId);
+        return administrationShowOutDTO;
     }
 
     /**
@@ -94,7 +95,7 @@ public class AdministrationController {
      */
     @PostMapping("/upload")
     public void uploadAdministration(@RequestBody AdministrationUploadInDTO administrationUploadInDTO){
-
+        administrationService.upload(administrationUploadInDTO);
     }
 
     /**

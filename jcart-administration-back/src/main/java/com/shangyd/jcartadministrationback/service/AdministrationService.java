@@ -2,6 +2,8 @@ package com.shangyd.jcartadministrationback.service;
 
 import com.github.pagehelper.Page;
 import com.shangyd.jcartadministrationback.dto.in.AdministrationCreateInDTO;
+import com.shangyd.jcartadministrationback.dto.in.AdministrationUploadInDTO;
+import com.shangyd.jcartadministrationback.dto.out.AdministrationShowOutDTO;
 import com.shangyd.jcartadministrationback.po.Administrator;
 
 public interface AdministrationService {
@@ -12,4 +14,8 @@ public interface AdministrationService {
     void delete(Integer administratorId);
 
     Integer createAdministrator(Administrator administrator);
+
+    AdministrationShowOutDTO getByAdministrationId(Integer administrationId);
+
+    void upload(AdministrationUploadInDTO administrationUploadInDTO);
 }

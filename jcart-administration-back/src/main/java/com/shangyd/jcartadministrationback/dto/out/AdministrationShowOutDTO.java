@@ -1,5 +1,9 @@
 package com.shangyd.jcartadministrationback.dto.out;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class AdministrationShowOutDTO {
 
     private Integer administrationId;
@@ -8,11 +12,24 @@ public class AdministrationShowOutDTO {
 
     private String password;
 
+    private String realName;
+
     private String email;
 
     private Byte status;
 
     private String avatarUrl;
+
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
+    private Date createTime;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public Integer getAdministrationId() {
         return administrationId;
@@ -60,5 +77,13 @@ public class AdministrationShowOutDTO {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }
