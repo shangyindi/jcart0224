@@ -8,4 +8,6 @@ public interface CustomerService {
     Integer register(Customer customer);
 
     Page<CustomerListOutDTO> search(Integer pageNum);
+
+    Customer login(String username);
 }

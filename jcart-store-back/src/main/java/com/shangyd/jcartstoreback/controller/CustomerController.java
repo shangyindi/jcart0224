@@ -2,11 +2,17 @@ package com.shangyd.jcartstoreback.controller;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.github.pagehelper.Page;
+import com.shangyd.jcartstoreback.constant.ClientExceptionConstant;
 import com.shangyd.jcartstoreback.dto.in.CustomerCreateInDTO;
+import com.shangyd.jcartstoreback.dto.in.CustomerLoginInDTO;
+import com.shangyd.jcartstoreback.dto.out.AdministrationLoginOutDTO;
 import com.shangyd.jcartstoreback.dto.out.CustomerListOutDTO;
+import com.shangyd.jcartstoreback.dto.out.CustomerLoginOutDTO;
 import com.shangyd.jcartstoreback.dto.out.PageOutDTO;
+import com.shangyd.jcartstoreback.exception.ClientException;
 import com.shangyd.jcartstoreback.po.Customer;
 import com.shangyd.jcartstoreback.service.CustomerService;
+import com.shangyd.jcartstoreback.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +25,9 @@ public class CustomerController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+     JWTUtil jwtUtil;
 
     @GetMapping("/search")
     public PageOutDTO<CustomerListOutDTO> search(@RequestParam(defaultValue = "1",required = false) Integer pageNum){
@@ -58,5 +67,22 @@ public class CustomerController {
         customer.setEncryptedPassword(bcryptHashString);
         Integer register = customerService.register(customer);
         return register;
+    }
+
+    @GetMapping("/login")
+    public CustomerLoginOutDTO login(CustomerLoginInDTO customerLoginInDTO) throws ClientException {
+        Customer customer = customerService.login(customerLoginInDTO.getUsername());
+        if(customer == null){
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRMSG);
+        }
+        String encPwdDB = customer.getEncryptedPassword();
+        BCrypt.Result result = BCrypt.verifyer().verify(customerLoginInDTO.getPassword().toCharArray(), encPwdDB);
+        if (result.verified) {
+            CustomerLoginOutDTO customerLoginOutDTO = jwtUtil.issueToken(customer);
+            return customerLoginOutDTO;
+        }else {
+            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRMSG);
+        }
+
     }
 }

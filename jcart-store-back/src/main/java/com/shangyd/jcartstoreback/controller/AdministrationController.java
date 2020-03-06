@@ -48,28 +48,6 @@ public class AdministrationController {
         return administratorId;
     }
     /**
-     * 用户登录
-     * @param administratorLoginInDTO
-     * @return
-     */
-    @GetMapping("/login")
-    public AdministrationLoginOutDTO login(AdministrationLoginInDTO administratorLoginInDTO) throws ClientException {
-        Administrator administrator = administrationService.getByUsername(administratorLoginInDTO.getUsername());
-        if (administrator == null){
-            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRMSG);
-        }
-        String encPwdDB = administrator.getEncryptedPassword();
-        BCrypt.Result result = BCrypt.verifyer().verify(administratorLoginInDTO.getPassword().toCharArray(), encPwdDB);
-        System.out.println(result);
-        if (result.verified) {
-            AdministrationLoginOutDTO administrationLoginOutDTO = jwtUtil.issueToken(administrator);
-            return administrationLoginOutDTO;
-        }else {
-            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRMSG);
-        }
-    }
-
-    /**
      *
      * @param administrationId
      * @return
