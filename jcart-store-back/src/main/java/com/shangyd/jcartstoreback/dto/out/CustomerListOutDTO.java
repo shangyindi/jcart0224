@@ -1,5 +1,7 @@
 package com.shangyd.jcartstoreback.dto.out;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class CustomerListOutDTO {
@@ -12,8 +14,10 @@ public class CustomerListOutDTO {
 
     private Byte status;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
     private Date createTime;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
     private Date uploadTime;
 
     public Date getUploadTime() {

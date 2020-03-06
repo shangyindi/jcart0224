@@ -1,7 +1,9 @@
 package com.shangyd.jcartstoreback.dao;
 
 import com.shangyd.jcartstoreback.po.Customer;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CustomerMapper {
     int deleteByPrimaryKey(Integer customerId);
 

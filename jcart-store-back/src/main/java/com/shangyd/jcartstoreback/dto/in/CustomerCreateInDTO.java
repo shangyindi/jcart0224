@@ -1,34 +1,24 @@
 package com.shangyd.jcartstoreback.dto.in;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class CustomerCreateInDTO {
 
-    private Integer customerId;
-
-    private String customerName;
+    private String username;
 
     private String email;
 
     private Byte status;
 
-    private Date createTime;
+    private String realName;
 
-    public Integer getCustomerId() {
-        return customerId;
-    }
+    private String mobile;
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
+    private String password;
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
+    private Boolean newsSubscribed;
 
     public String getEmail() {
         return email;
@@ -46,11 +36,43 @@ public class CustomerCreateInDTO {
         this.status = status;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Boolean getNewsSubscribed() {
+        return newsSubscribed;
+    }
+
+    public void setNewsSubscribed(Boolean newsSubscribed) {
+        this.newsSubscribed = newsSubscribed;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }
