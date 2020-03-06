@@ -13,6 +13,7 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin
 public class CustomerController {
 
     @Autowired
@@ -39,10 +40,10 @@ public class CustomerController {
         customer.setCreateTime(new Date());
         customer.setEmail(customerCreateInDTO.getEmail());
         customer.setMobile(customerCreateInDTO.getMobile());
-        customer.setNewsSubscribed(customerCreateInDTO.getNewsSubscribed());
         customer.setUsername(customerCreateInDTO.getUsername());
         customer.setRealName(customerCreateInDTO.getRealName());
         customer.setStatus(customerCreateInDTO.getStatus());
+        customer.setNewsSubscribed(customerCreateInDTO.getNewsSubscribed());
         customer.setRewordPoints(0);
         customer.setMobileVerified(false);
         customer.setEmailVerified(false);
