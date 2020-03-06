@@ -4,8 +4,6 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.shangyd.jcartstoreback.dto.in.CustomerCreateInDTO;
 import com.shangyd.jcartstoreback.dto.out.CustomerListOutDTO;
 import com.shangyd.jcartstoreback.dto.out.PageOutDTO;
-import com.shangyd.jcartstoreback.dto.out.CustomerListOutDTO;
-import com.shangyd.jcartstoreback.dto.out.PageOutDTO;
 import com.shangyd.jcartstoreback.po.Customer;
 import com.shangyd.jcartstoreback.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +43,12 @@ public class CustomerController {
         customer.setUsername(customerCreateInDTO.getUsername());
         customer.setRealName(customerCreateInDTO.getRealName());
         customer.setStatus(customerCreateInDTO.getStatus());
+        customer.setRewordPoints(0);
+        customer.setMobileVerified(false);
+        customer.setEmailVerified(false);
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, customerCreateInDTO.getPassword().toCharArray());
         customer.setEncryptedPassword(bcryptHashString);
-        Integer customerId = customerService.register(customer);
-        return customerId;
+        Integer register = customerService.register(customer);
+        return register;
     }
 }

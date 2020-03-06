@@ -14,7 +14,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Integer register(Customer customer) {
-        Integer customerId = customerMapper.insertSelective(customer);
-        return customerId;
+        int insertSelective = customerMapper.insertSelective(customer);
+        return insertSelective;
     }
 }
