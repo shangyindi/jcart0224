@@ -12,32 +12,16 @@
 <body>
     <div id="app">
         <el-input v-model="username" placeholder="请输入用户名"></el-input>
-        <el-input v-model="realName" placeholder="请输入姓名"></el-input>
-        <el-input v-model="mobile" placeholder="请输入手机号"></el-input>
         <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
-        <el-input placeholder="再次输入密码" v-model="respassword" show-password></el-input>
-        <el-input v-model="email" placeholder="请输入邮箱"></el-input>
-        <el-select v-model="selectStatus" placeholder="请选择">
-            <el-option
-              v-for="item in statuses"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
-        订阅新闻<el-switch
-        v-model="newsSubscribed"
-        active-color="#13ce66"
-        inactive-color="#ff4949">
-      </el-switch><br><br>
-      <el-button type="primary" @click="handleRegisterClick">注册</el-button>
+        <el-input placeholder="请确认密码" v-model="respassword" show-password></el-input>
+        <el-button type="primary" @click="handleLoginClick">登录</el-button>
     </div>
 
     <script src="assets/js/axios.min.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/vue.js"></script>
     <script src="assets/js/elementui.js"></script>
-    <script src="viewmodels/customer-register.js"></script>
+    <script src="viewmodels/customer-login.js"></script>
 </body>
 
 </html>
