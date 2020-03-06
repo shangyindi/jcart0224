@@ -3,6 +3,7 @@ package com.shangyd.jcartadministrationback.service.Impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.shangyd.jcartadministrationback.dao.AdministratorMapper;
+import com.shangyd.jcartadministrationback.dto.in.AdministrationCreateInDTO;
 import com.shangyd.jcartadministrationback.po.Administrator;
 import com.shangyd.jcartadministrationback.service.AdministrationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,11 @@ public class AdministrationServiceImpl implements AdministrationService {
     public void delete(Integer administratorId) {
         administratorMapper.deleteByPrimaryKey(administratorId);
     }
+
+    @Override
+    public Integer createAdministrator(Administrator administrator) {
+        Integer administratorId = administratorMapper.insertSelective(administrator);
+        return administratorId;
+    }
+
 }

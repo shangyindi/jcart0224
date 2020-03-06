@@ -34,7 +34,17 @@ public class AdministrationController {
 
     @PostMapping("/create")
     public Integer create(@RequestBody AdministrationCreateInDTO administrationCreateInDTO){
-        return null;
+        Administrator administrator = new Administrator();
+        administrator.setRealName(administrationCreateInDTO.getRealName());
+        administrator.setUsername(administrationCreateInDTO.getUsername());
+        administrator.setAvatarUrl(administrationCreateInDTO.getAvatarUrl());
+        administrator.setCreateTime(administrationCreateInDTO.getCreateTime());
+        administrator.setEmail(administrationCreateInDTO.getEmail());
+        administrator.setStatus(administrationCreateInDTO.getStatus());
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, administrationCreateInDTO.getPassword().toCharArray());
+        administrator.setEncryptedPassword(bcryptHashString);
+        Integer administratorId = administrationService.createAdministrator(administrator);
+        return administratorId;
     }
     /**
      * 用户登录
@@ -114,7 +124,7 @@ public class AdministrationController {
     }
 
     @PostMapping("/delete")
-    public void delete(Integer administratorId){
+    public void delete(@RequestBody Integer administratorId){
         administrationService.delete(administratorId);
     }
 }

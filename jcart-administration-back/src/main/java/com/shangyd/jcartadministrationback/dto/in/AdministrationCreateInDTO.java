@@ -1,5 +1,9 @@
 package com.shangyd.jcartadministrationback.dto.in;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class AdministrationCreateInDTO {
 
     private Integer administrationId;
@@ -9,6 +13,11 @@ public class AdministrationCreateInDTO {
     private String password;
 
     private String email;
+
+    private String realName;
+
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
+    private Date createTime;
 
     private String avatarUrl;
 
@@ -60,5 +69,21 @@ public class AdministrationCreateInDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
