@@ -17,16 +17,7 @@ public class CustomerListOutDTO {
     @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
     private Date createTime;
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
-    private Date uploadTime;
-
-    public Date getUploadTime() {
-        return uploadTime;
-    }
-
-    public void setUploadTime(Date uploadTime) {
-        this.uploadTime = uploadTime;
-    }
+    private String mobile;
 
     public Integer getCustomerId() {
         return customerId;
@@ -66,5 +57,13 @@ public class CustomerListOutDTO {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }

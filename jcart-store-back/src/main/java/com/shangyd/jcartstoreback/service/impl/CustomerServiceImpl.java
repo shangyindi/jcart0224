@@ -1,6 +1,9 @@
 package com.shangyd.jcartstoreback.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.shangyd.jcartstoreback.dao.CustomerMapper;
+import com.shangyd.jcartstoreback.dto.out.CustomerListOutDTO;
 import com.shangyd.jcartstoreback.po.Customer;
 import com.shangyd.jcartstoreback.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,5 +19,12 @@ public class CustomerServiceImpl implements CustomerService {
     public Integer register(Customer customer) {
         int insertSelective = customerMapper.insertSelective(customer);
         return insertSelective;
+    }
+
+    @Override
+    public Page<CustomerListOutDTO> search(Integer pageNum) {
+        PageHelper.startPage(1,10);
+        Page<CustomerListOutDTO> page = customerMapper.search(pageNum);
+        return page;
     }
 }

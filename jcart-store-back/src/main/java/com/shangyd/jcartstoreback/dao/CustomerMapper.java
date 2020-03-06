@@ -1,5 +1,7 @@
 package com.shangyd.jcartstoreback.dao;
 
+import com.github.pagehelper.Page;
+import com.shangyd.jcartstoreback.dto.out.CustomerListOutDTO;
 import com.shangyd.jcartstoreback.po.Customer;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +18,6 @@ public interface CustomerMapper {
     int updateByPrimaryKeySelective(Customer record);
 
     int updateByPrimaryKey(Customer record);
+
+    Page<CustomerListOutDTO> search(Integer pageNum);
 }

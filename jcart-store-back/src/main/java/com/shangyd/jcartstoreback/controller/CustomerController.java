@@ -1,6 +1,7 @@
 package com.shangyd.jcartstoreback.controller;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.github.pagehelper.Page;
 import com.shangyd.jcartstoreback.dto.in.CustomerCreateInDTO;
 import com.shangyd.jcartstoreback.dto.out.CustomerListOutDTO;
 import com.shangyd.jcartstoreback.dto.out.PageOutDTO;
@@ -20,8 +21,14 @@ public class CustomerController {
     CustomerService customerService;
 
     @GetMapping("/search")
-    public PageOutDTO<CustomerListOutDTO> search(@RequestParam Integer customerId){
-        return null;
+    public PageOutDTO<CustomerListOutDTO> search(@RequestParam(defaultValue = "1",required = false) Integer pageNum){
+        Page<CustomerListOutDTO> customerListOutDTOS = customerService.search(pageNum);
+        PageOutDTO<CustomerListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setList(customerListOutDTOS);
+        pageOutDTO.setPageNum(customerListOutDTOS.getPageNum());
+        pageOutDTO.setPageSize(customerListOutDTOS.getPageSize());
+        pageOutDTO.setTotal(customerListOutDTOS.getTotal());
+        return pageOutDTO;
     }
 
     /**
