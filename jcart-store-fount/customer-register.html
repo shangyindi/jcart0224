@@ -18,19 +18,12 @@
         <el-input placeholder="再次输入密码" v-model="respassword" show-password></el-input>
         <el-input v-model="email" placeholder="请输入邮箱"></el-input>
         <el-select v-model="selectStatus" placeholder="请选择">
-            <el-option
-              v-for="item in statuses"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
+            <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
-          </el-select>
-        订阅新闻<el-switch
-        v-model="newsSubscribed"
-        active-color="#13ce66"
-        inactive-color="#ff4949">
-      </el-switch><br><br>
-      <el-button type="primary" @click="handleRegisterClick">注册</el-button>
+        </el-select>
+        订阅新闻<el-switch v-model="newsSubscribed" active-color="#13ce66" inactive-color="#ff4949">
+        </el-switch><br><br>
+        <el-button type="primary" @click="handleRegisterClick">注册</el-button>
     </div>
 
     <script src="assets/js/axios.min.js"></script>

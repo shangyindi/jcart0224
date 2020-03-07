@@ -40,16 +40,6 @@ public class CustomerController {
         return pageOutDTO;
     }
 
-    /**
-     *
-     * @param customerCreateInDTO
-     * @return
-     */
-    @PostMapping("/create")
-    public int create(@RequestBody CustomerCreateInDTO customerCreateInDTO){
-        return 0;
-    }
-
     @PostMapping("/register")
     public Integer register(@RequestBody CustomerCreateInDTO customerCreateInDTO){
         Customer customer = new Customer();
