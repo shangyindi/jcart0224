@@ -3,6 +3,8 @@ package com.shangyd.jcartstoreback.dao;
 import com.shangyd.jcartstoreback.po.Address;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface AddressMapper {
     int deleteByPrimaryKey(Integer addressId);
@@ -17,4 +19,5 @@ public interface AddressMapper {
 
     int updateByPrimaryKey(Address record);
 
+    List<Address> getCustomerAddress(Integer customerId);
 }
