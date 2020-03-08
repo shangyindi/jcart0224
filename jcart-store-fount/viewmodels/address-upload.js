@@ -20,17 +20,18 @@ var app = new Vue({
     methods: {
         handleUploadAddressClick() {
             console.log('upload address click')
-            this.addressCreate();
+            this.UploadAddressClick();
         },
         UploadAddressClick() {
             axios.post('/address/upload', {
+                addressId: this.addressId,
                 receiverName: this.receiverName,
                 receiverMobile: this.receiverMobile,
                 content: this.content,
                 tag: this.tag,
             }).then(function (response) {
                 console.log(response)
-                alert('注册成功');
+                alert('更新成功');
             }).catch(function (error) {
                 console.log(error)
             })
