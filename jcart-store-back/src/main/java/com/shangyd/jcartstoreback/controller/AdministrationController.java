@@ -53,7 +53,7 @@ public class AdministrationController {
      * @return
      */
     @GetMapping("/getByAdministrationId")
-    public AdministrationShowOutDTO getByAdministrationId(@RequestParam("administrationId") Integer administrationId){
+    public AdministrationShowOutDTO getByAdministrationId(@RequestAttribute("administrationId") Integer administrationId){
         AdministrationShowOutDTO administrationShowOutDTO = administrationService.getByAdministrationId(administrationId);
         return administrationShowOutDTO;
     }
