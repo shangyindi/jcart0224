@@ -65,7 +65,7 @@ public class JWTUtil {
         jwt = verifier.verify(token);
 
         AdministrationLoginVO administratorLoginVO = new AdministrationLoginVO();
-        administratorLoginVO.setAdministratorId(jwt.getClaim("administratorId").asInt());
+        administratorLoginVO.setAdministrationId(jwt.getClaim("administratorId").asInt());
         administratorLoginVO.setUsername(jwt.getSubject());
         return administratorLoginVO;
     }

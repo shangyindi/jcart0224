@@ -59,7 +59,6 @@ public class AdministrationController {
         }
         String encPwdDB = administrator.getEncryptedPassword();
         BCrypt.Result result = BCrypt.verifyer().verify(administratorLoginInDTO.getPassword().toCharArray(), encPwdDB);
-        System.out.println(result);
         if (result.verified) {
             AdministrationLoginOutDTO administrationLoginOutDTO = jwtUtil.issueToken(administrator);
             return administrationLoginOutDTO;
@@ -74,7 +73,7 @@ public class AdministrationController {
      * @return
      */
     @GetMapping("/getByAdministrationId")
-    public AdministrationShowOutDTO getByAdministrationId(@RequestParam("administrationId") Integer administrationId){
+    public AdministrationShowOutDTO getByAdministrationId(@RequestAttribute("administrationId") Integer administrationId){
         AdministrationShowOutDTO administrationShowOutDTO = administrationService.getByAdministrationId(administrationId);
         return administrationShowOutDTO;
     }

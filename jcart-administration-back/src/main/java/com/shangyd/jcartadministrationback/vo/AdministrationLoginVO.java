@@ -1,15 +1,15 @@
 package com.shangyd.jcartadministrationback.vo;
 
 public class AdministrationLoginVO {
-    private Integer administratorId;
+    private Integer administrationId;
     private String username;
 
-    public Integer getAdministratorId() {
-        return administratorId;
+    public Integer getAdministrationId() {
+        return administrationId;
     }
 
-    public void setAdministratorId(Integer administratorId) {
-        this.administratorId = administratorId;
+    public void setAdministrationId(Integer administrationId) {
+        this.administrationId = administrationId;
     }
 
     public String getUsername() {
