@@ -3,6 +3,7 @@ package com.shangyd.jcartstoreback.controller;
 import com.github.pagehelper.Page;
 import com.shangyd.jcartstoreback.dto.in.AddressCreateInDTO;
 import com.shangyd.jcartstoreback.dto.out.AddressListOutDTO;
+import com.shangyd.jcartstoreback.dto.out.AddressShowOutDTO;
 import com.shangyd.jcartstoreback.dto.out.PageOutDTO;
 import com.shangyd.jcartstoreback.po.Address;
 import com.shangyd.jcartstoreback.service.AddressService;
@@ -45,6 +46,12 @@ public class AddressController {
             return  addressListOutDTO;
         }).collect(Collectors.toList());
         return  addressListOutDTOS;
+    }
+
+    @GetMapping("/getByAddress")
+    public AddressShowOutDTO getByAddress(@RequestParam("addressId")Integer addressId){
+        AddressShowOutDTO addressShowOutDTO = addressService.getByAddress(addressId);
+        return  addressShowOutDTO;
     }
 
 
