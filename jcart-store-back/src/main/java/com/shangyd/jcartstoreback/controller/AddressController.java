@@ -2,6 +2,7 @@ package com.shangyd.jcartstoreback.controller;
 
 import com.github.pagehelper.Page;
 import com.shangyd.jcartstoreback.dto.in.AddressCreateInDTO;
+import com.shangyd.jcartstoreback.dto.in.AddressUploadInDTO;
 import com.shangyd.jcartstoreback.dto.out.AddressListOutDTO;
 import com.shangyd.jcartstoreback.dto.out.AddressShowOutDTO;
 import com.shangyd.jcartstoreback.dto.out.PageOutDTO;
@@ -54,5 +55,8 @@ public class AddressController {
         return  addressShowOutDTO;
     }
 
-
+    @PostMapping("/upload")
+    public  void  upload(@RequestBody AddressUploadInDTO addressUploadInDTO){
+        addressService.uploadAddress(addressUploadInDTO);
+    }
 }

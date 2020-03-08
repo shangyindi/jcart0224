@@ -1,6 +1,7 @@
 package com.shangyd.jcartstoreback.service.impl;
 
 import com.shangyd.jcartstoreback.dao.AddressMapper;
+import com.shangyd.jcartstoreback.dto.in.AddressUploadInDTO;
 import com.shangyd.jcartstoreback.dto.out.AddressShowOutDTO;
 import com.shangyd.jcartstoreback.po.Address;
 import com.shangyd.jcartstoreback.service.AddressService;
@@ -39,5 +40,18 @@ public class AddressServiceImpl implements AddressService {
         addressShowOutDTO.setReceiverName(address.getReceiverName());
         addressShowOutDTO.setTag(address.getTag());
         return addressShowOutDTO;
+    }
+
+
+    @Override
+    @Transactional
+    public void uploadAddress(AddressUploadInDTO addressUploadInDTO) {
+        Address address = new Address();
+        address.setTag(addressUploadInDTO.getTag());
+        address.setReceiverName(addressUploadInDTO.getReceiverName());
+        address.setReceiverMobile(addressUploadInDTO.getReceiverMobile());
+        address.setContent(addressUploadInDTO.getContent());
+        address.setAddressId(addressUploadInDTO.getAddressId());
+        addressMapper.updateByPrimaryKeySelective(address);
     }
 }
