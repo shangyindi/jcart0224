@@ -22,7 +22,8 @@ var app = new Vue({
             { value: 2, label: '待审核' }
         ],
         mainFileList: [],
-        otherFileList: []
+        otherFileList: [],
+        quantity:1
     },
     mounted() {
         console.log('view mounted');
@@ -38,6 +39,9 @@ var app = new Vue({
         this.getProductId();
     },
     methods: {
+        addToShoppingCart(){
+
+        },
         handleCreateClick() {
             console.log('create click');
             this.description = tinyMCE.activeEditor.getContent();
