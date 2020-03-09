@@ -54,6 +54,7 @@ var app = new Vue({
             newProduct.totalPrice = this.quantity * this.price;
             this.myProducts.push(newProduct);       
             localStorage['myShoppingCart'] =JSON.stringify(this.myProducts);    
+            this.$message('添加购物车成功');
         },
         handleCreateClick() {
             console.log('create click');

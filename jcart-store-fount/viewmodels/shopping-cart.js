@@ -9,7 +9,11 @@ var app = new Vue({
         this.myProducts = JSON.parse(myShoppingCart)
     },
     methods: {
-      
+        handleDelete(index,row){
+            console.log('view deleted click');
+            this.myProducts.splice(index,1);
+            localStorage['myShoppingCart'] = JSON.stringify(this.myProducts);
+        }
     },
 
 })
