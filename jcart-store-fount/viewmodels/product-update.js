@@ -23,13 +23,13 @@ var app = new Vue({
         ],
         mainFileList: [],
         otherFileList: [],
-        quantity:1
+        quantity:1,
+        myProducts:[]
     },
     mounted() {
         console.log('view mounted');
-        tinymce.init({
-            selector: '#mytextarea'
-        });
+        var myProducts = localStorage['myShoppingCart'];
+        this.myProducts = myProducts ? JSON.parse(myProducts) : [];
         var url = new URL(location.href);
         this.productId = url.searchParams.get("productId");
         if (!this.productId) {
@@ -37,10 +37,23 @@ var app = new Vue({
             return;
         }
         this.getProductId();
+
+
     },
     methods: {
         addToShoppingCart(){
-
+            console.log('add to cart cilck')   
+            var newProduct = {
+                productId: this.productId,
+                productCode:this.productCode,
+                productName:this.productName,
+                mainPicUrl:this.mainPicUrl,
+                unitPrice:this.price,
+                quantity:this.quantity,
+            };
+            newProduct.totalPrice = this.quantity * this.price;
+            this.myProducts.push(newProduct);       
+            localStorage['myShoppingCart'] =JSON.stringify(this.myProducts);    
         },
         handleCreateClick() {
             console.log('create click');

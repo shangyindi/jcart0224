@@ -6,7 +6,6 @@ var app = new Vue({
     mounted(){
         console.log('view  mounted ')
         var myShoppingCart = localStorage['myShoppingCart'];
-        console.log(myShoppingCart);
         this.myProducts = JSON.parse(myShoppingCart)
     },
     methods: {
