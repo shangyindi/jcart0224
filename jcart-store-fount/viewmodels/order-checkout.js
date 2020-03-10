@@ -54,6 +54,15 @@ var app = new Vue({
             var totalPriceStr = totalPrice.toFixed(2);
             totalPrice = parseFloat(totalPriceStr);
             return totalPrice;
+        },
+        orderProducts(){
+            var orderProducts = this.myProducts.map(p => {
+                var orderProduct = new Object();
+                orderProduct.productId = p.productId;
+                orderProduct.quantity = p.quantity;
+                return orderProduct;
+            })
+            return orderProducts;
         }
     },mounted(){
         console.log('view mounted')
@@ -67,6 +76,26 @@ var app = new Vue({
             .then(function (response) {
                console.log(response);
                app.myAddresses = response.data;
+            }).catch(function (error) {
+                console.log(error)
+            })
+        },
+        handleCheckoutOrder(){
+            console.log('click checkoutOrder')
+            this.checkout();
+        },
+        checkout(){
+            axios.post('/order/checkout',{
+                shipMethod:this.selectedShipMethods,
+                shipAddressId:this.selectedShipAddressId,
+                comment:this.comment,
+                payMethod:this.selectedPayMethods,
+                invoiceAddressId:this.selectedInvoiceAddressId,
+                orderProducts:this.orderProducts
+            })
+            .then(function (response) {
+                console.log(response)
+                alert('下单成功');
             }).catch(function (error) {
                 console.log(error)
             })
