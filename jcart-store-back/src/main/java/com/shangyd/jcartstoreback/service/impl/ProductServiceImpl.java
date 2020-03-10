@@ -128,4 +128,9 @@ public class ProductServiceImpl implements ProductService {
         return productShowOutDTO;
     }
 
+    @Override
+    public Product getProduct(Integer productId) {
+        return productMapper.selectByPrimaryKey(productId);
+    }
+
 }

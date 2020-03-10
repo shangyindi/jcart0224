@@ -5,6 +5,7 @@ import com.shangyd.jcartstoreback.dto.in.ProductCreateInDTO;
 import com.shangyd.jcartstoreback.dto.in.ProductUploadInDTO;
 import com.shangyd.jcartstoreback.dto.out.ProductListOutDTO;
 import com.shangyd.jcartstoreback.dto.out.ProductShowOutDTO;
+import com.shangyd.jcartstoreback.po.Product;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface ProductService {
     void batchdelete(List<Integer> productIds);
 
     ProductShowOutDTO getById(Integer productId);
+
+    Product getProduct(Integer productId);
 }
