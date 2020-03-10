@@ -43,17 +43,27 @@ var app = new Vue({
     methods: {
         addToShoppingCart(){
             console.log('add to cart cilck')   
-            var newProduct = {
-                productId: this.productId,
-                productCode:this.productCode,
-                productName:this.productName,
-                mainPicUrl:this.mainPicUrl,
-                unitPrice:this.price,
-                quantity:this.quantity,
-            };
-            newProduct.totalPrice = this.quantity * this.price;
-            this.myProducts.push(newProduct);       
-            localStorage['myShoppingCart'] =JSON.stringify(this.myProducts);    
+
+            var myProducts = localStorage['myShoppingCart'];
+            this.myProducts = myProducts ? JSON.parse(myProducts) : [];
+            var cartProduct = this.myProducts.find(p => p.productId === this.productId);
+            if(cartProduct){
+                console.log('new cartProduct')
+                var originQuantity = parseInt(cartProduct.quantity);
+                var addQuantity = parseInt(this.quantity);
+                cartProduct.quantity = originQuantity + addQuantity;
+            }else{
+                cartProduct = {
+                    productId: this.productId,
+                    productCode:this.productCode,
+                    productName:this.productName,
+                    mainPicUrl:this.mainPicUrl,
+                    unitPrice:this.price,
+                    quantity:this.quantity,
+                };
+                this.myProducts.push(cartProduct);       
+            }
+            localStorage['myShoppingCart'] =JSON.stringify(this.myProducts) ;    
             this.$message('添加购物车成功');
         },
         handleCreateClick() {
