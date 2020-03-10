@@ -42,9 +42,23 @@ var app = new Vue({
         selectedInvoiceAddressId: '',
         selectedPayMethods: 1,
         selectedShipMethods: 1,
-        comment:''
+        comment:'',
+        myProducts:[],
+        shipPrice:5.0,
+    },computed:{
+        totalPrice(){
+            var subTotalPrices = this.myProducts.map(p => {
+                return p.unitPrice * p.discount * p.quantity;
+            });
+            var totalPrice = subTotalPrices.reduce((a, b) => a + b, 0);
+            var totalPriceStr = totalPrice.toFixed(2);
+            totalPrice = parseFloat(totalPriceStr);
+            return totalPrice;
+        }
     },mounted(){
         console.log('view mounted')
+        var myProducts = localStorage['myShoppingCart'];
+        this.myProducts = myProducts ? JSON.parse(myProducts) : [];
         this.getMyAddress();
     },
     methods: {

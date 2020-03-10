@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/elementui.css">
-    <title>客户注册</title>
+    <title>订单checkout</title>
 </head>
 
 <body>
@@ -27,8 +27,38 @@
             <el-option v-for="item in shipMethods" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
         </el-select><br>
+        <el-table :data="myProducts" style="width: 100%">
+            <el-table-column prop="productCode" label="商品编号" width="180">
+            </el-table-column>
+            <el-table-column prop="productName" label="商品名称">
+            </el-table-column>
+            <el-table-column prop="unitPrice" label="单价">
+                <template slot-scope="scope">
+                    单价：{{scope.row.unitPrice}}
+                    <br/>
+                    打折：{{scope.row.discount}}
+                    <br/>
+                    打折后：{{(scope.row.unitPrice * scope.row.discount).toFixed(2)}}
+                </template>
+            </el-table-column>
+            <el-table-column prop="quantity" label="数量">
+            </el-table-column>
+            <el-table-column prop="totalPrice" label="总价">
+                <template slot-scope="scope">
+                    <!-- 单价*数量  余数2 -->
+                    {{(scope.row.unitPrice * scope.row.quantity * scope.row.discount).toFixed(2)}}
+                    <br>
+                    邮费：{{shipPrice * scope.row.quantity}}
+                    支付价：{{(totalPrice + shipPrice * scope.row.quantity)}}
+                </template>
+            </el-table-column>
+        </el-table>
         <el-input v-model="comment" placeholder="请输入备注"></el-input>
-        
+        <br>
+        总价：{{totalPrice}}
+        <br>
+        <br>
+
     </div>
 
     <script src="assets/js/axios.min.js"></script>

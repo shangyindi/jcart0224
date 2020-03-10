@@ -60,6 +60,7 @@ var app = new Vue({
                     mainPicUrl:this.mainPicUrl,
                     unitPrice:this.price,
                     quantity:this.quantity,
+                    discount:this.discount
                 };
                 this.myProducts.push(cartProduct);       
             }
