@@ -11,6 +11,23 @@
 
 <body>
     <div id="app">
+        <el-select v-model="selectedShipAddressId" placeholder="请选择邮寄地址">
+            <el-option v-for="item in myAddresses" :key="item.addressId" :label="item.content" :value="item.value">
+            </el-option>
+        </el-select><br>
+        <el-select v-model="selectedInvoiceAddressId" placeholder="请选择发票地址">
+            <el-option v-for="item in myAddresses" :key="item.addressId" :label="item.content" :value="item.value">
+            </el-option>
+        </el-select><br>
+        <el-select v-model="selectedPayMethods" placeholder="请选择支付方式">
+            <el-option v-for="item in payMethods" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+        </el-select><br>
+        <el-select v-model="selectedShipMethods" placeholder="请选择寄送方式">
+            <el-option v-for="item in shipMethods" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+        </el-select><br>
+        <el-input v-model="comment" placeholder="请输入备注"></el-input>
         
     </div>
 
