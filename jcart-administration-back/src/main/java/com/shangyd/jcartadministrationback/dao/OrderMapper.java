@@ -28,4 +28,6 @@ public interface OrderMapper {
                                  @Param("totalPrice") Double totalPrice,
                                  @Param("startTime")Date startTime,
                                  @Param("endTime") Date endTime);
+
+    Order getByOrderId(Long orderId);
 }

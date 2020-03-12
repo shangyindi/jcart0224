@@ -3,6 +3,7 @@ package com.shangyd.jcartadministrationback.controller;
 import com.github.pagehelper.Page;
 import com.shangyd.jcartadministrationback.dto.in.OrderSearchInDTO;
 import com.shangyd.jcartadministrationback.dto.out.OrderListOutDTO;
+import com.shangyd.jcartadministrationback.dto.out.OrderShowOutDTO;
 import com.shangyd.jcartadministrationback.dto.out.PageOutDTO;
 import com.shangyd.jcartadministrationback.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,11 @@ public class OrderController {
         pageOutDTO.setTotal(page.getTotal());
         pageOutDTO.setPageNum(page.getPageNum());
         return pageOutDTO;
+    }
+
+    @GetMapping("/getByOrderId")
+    public OrderShowOutDTO getByOrderId(@RequestParam("orderId")Long orderId){
+        OrderShowOutDTO orderShowOutDTO = orderService.getByOrderId(orderId);
+        return orderShowOutDTO;
     }
 }
