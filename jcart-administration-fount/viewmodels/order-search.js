@@ -2,7 +2,9 @@ var app = new Vue({
     el: '#app',
     data: {
         pageInfo:'',
-        pageNum:1
+        pageNum:1,
+        statuses:[{value:1,label:'上架'},
+                {value:0,label:'下架'}]
     },
     mounted(){
         console.log('View mounted');
@@ -19,7 +21,7 @@ var app = new Vue({
             axios.get('http://localhost:8080/order/search', {
                 params: {
                    pageNum:this.pageNum,
-                   pageInfo:this.pageInfo
+                   pageInfo:this.pageInfo,
                 }
             })
                 .then(function (response) {
