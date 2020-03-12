@@ -64,11 +64,13 @@ public class OrderListOutDTO {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
     public Long getCreateTimestamp() {
-        return createTimestamp;
+        return this.createTime == null ? null : this.createTime.getTime();
     }
 
+    public Long getUpdateTimestamp() {
+        return this.updateTime == null ? null : this.updateTime.getTime();
+    }
     public void setCreateTimestamp(Long createTimestamp) {
         this.createTimestamp = createTimestamp;
     }
@@ -79,10 +81,6 @@ public class OrderListOutDTO {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Long getUpdateTimestamp() {
-        return updateTimestamp;
     }
 
     public void setUpdateTimestamp(Long updateTimestamp) {

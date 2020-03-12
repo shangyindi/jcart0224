@@ -124,6 +124,6 @@
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
   <select id="search" resultMap="OrderListOutDTO">
-    SELECT o.*,c.real_name from jcart_order  o LEFT JOIN jcart_customer c on o.customer_id = c.customer_id
+    SELECT o.*,c.real_name from jcart_order  o LEFT JOIN jcart_customer c on o.customer_id = c.customer_id  order by create_time desc
 </select>
 </mapper>
