@@ -11,12 +11,40 @@
 
 <body>
   <div id="app">
-    
-    <el-input v-model="input" placeholder="请输入内容"></el-input>
-    <el-input v-model="input" placeholder="请输入内容"></el-input>
-    <el-input v-model="input" placeholder="请输入内容"></el-input>
-    <el-input v-model="input" placeholder="请输入内容"></el-input>
-
+    客户姓名：{{customerName}}<br />
+    总价：{{totalPrice}}<br />
+    商品积分：{{rewordPoints}}<br />
+    创建时间：{{new Date(createTimestamp).toLocaleString()}}<br />
+    修改时间：{{new Date(updateTimestamp).toLocaleString()}}<br />
+    寄送地址：{{shipAddress}}<br />
+    邮费：{{shipPrice}}<br />
+    备注：{{comment}}<br />
+    <el-select v-model="selectedPayMethods" placeholder="请选择支付方式">
+      <el-option v-for="item in payMethods" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select><br>
+    <el-select v-model="selectedShipMethods" placeholder="请选择寄送方式">
+      <el-option v-for="item in shipMethods" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select><br>
+    <el-table :data="orderProducts" style="width: 100%">
+      <el-table-column prop="productId" label="商品ID" width="180">
+      </el-table-column>
+      <el-table-column prop="productCode" label="商品代码" width="180">
+      </el-table-column>
+      <el-table-column prop="productName" label="商品名称" width="150">
+      </el-table-column>
+      <el-table-column prop="quantity" label="商品数量" width="150">
+      </el-table-column>
+      <el-table-column prop="unitPrice" label="商品单价" width="150">
+      </el-table-column>
+      <el-table-column prop="totalPrice" label="总价" width="150">
+      </el-table-column>
+      <el-table-column prop="unitRewordPoints" label="商品积分" width="150">
+      </el-table-column>
+      <el-table-column prop="totalRewordPoints" label="总积分" width="150">
+      </el-table-column>
+    </el-table>
   </div>
   <script src="assets/js/axios.min.js"></script>
   <script src="assets/js/common.js"></script>
