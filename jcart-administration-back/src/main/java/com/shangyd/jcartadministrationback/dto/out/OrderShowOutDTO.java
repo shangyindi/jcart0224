@@ -1,53 +1,28 @@
 package com.shangyd.jcartadministrationback.dto.out;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.shangyd.jcartadministrationback.vo.OrderProductVO;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderShowOutDTO {
     private Long orderId;
     private Integer customerId;
+    private String customerName;
+    private Byte status;
     private Double totalPrice;
-    @JsonIgnore
-    private Date createTime;
+    private Integer rewordPoints;
     private Long createTimestamp;
-    @JsonIgnore
-    private Date updateTime;
     private Long updateTimestamp;
-    private String email;
-    private String mobile;
-    private String realName;
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public Long getCreateTimestamp() {
-        return this.createTime == null ? null : this.createTime.getTime();
-    }
-
-    public Long getUpdateTimestamp() {
-        return this.updateTime == null ? null : this.updateTime.getTime();
-    }
+    private Short shipMethod;
+    private String shipAddress;
+    private Double shipPrice;
+    private Short payMethod;
+    private String invoiceAddress;
+    private Double invoicePrice;
+    private String comment;
+    private List<OrderProductVO> orderProducts;
 
     public Long getOrderId() {
         return orderId;
@@ -65,6 +40,22 @@ public class OrderShowOutDTO {
         this.customerId = customerId;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
     public Double getTotalPrice() {
         return totalPrice;
     }
@@ -73,27 +64,91 @@ public class OrderShowOutDTO {
         this.totalPrice = totalPrice;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Integer getRewordPoints() {
+        return rewordPoints;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setRewordPoints(Integer rewordPoints) {
+        this.rewordPoints = rewordPoints;
+    }
+
+    public Long getCreateTimestamp() {
+        return createTimestamp;
     }
 
     public void setCreateTimestamp(Long createTimestamp) {
         this.createTimestamp = createTimestamp;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public Long getUpdateTimestamp() {
+        return updateTimestamp;
     }
 
     public void setUpdateTimestamp(Long updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
+    }
+
+    public Short getShipMethod() {
+        return shipMethod;
+    }
+
+    public void setShipMethod(Short shipMethod) {
+        this.shipMethod = shipMethod;
+    }
+
+    public String getShipAddress() {
+        return shipAddress;
+    }
+
+    public void setShipAddress(String shipAddress) {
+        this.shipAddress = shipAddress;
+    }
+
+    public Double getShipPrice() {
+        return shipPrice;
+    }
+
+    public void setShipPrice(Double shipPrice) {
+        this.shipPrice = shipPrice;
+    }
+
+    public Short getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(Short payMethod) {
+        this.payMethod = payMethod;
+    }
+
+    public String getInvoiceAddress() {
+        return invoiceAddress;
+    }
+
+    public void setInvoiceAddress(String invoiceAddress) {
+        this.invoiceAddress = invoiceAddress;
+    }
+
+    public Double getInvoicePrice() {
+        return invoicePrice;
+    }
+
+    public void setInvoicePrice(Double invoicePrice) {
+        this.invoicePrice = invoicePrice;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public List<OrderProductVO> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProductVO> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 }
