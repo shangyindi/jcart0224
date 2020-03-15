@@ -12,7 +12,7 @@
 <body>
   <div id="app">
     客户姓名：{{customerName}}<br />
-    总价：{{totalPrice}}<br />
+    总价：{{totalPrice.toFixed(2)}}<br />
     商品积分：{{rewordPoints}}<br />
     创建时间：{{new Date(createTimestamp).toLocaleString()}}<br />
     修改时间：{{new Date(updateTimestamp).toLocaleString()}}<br />

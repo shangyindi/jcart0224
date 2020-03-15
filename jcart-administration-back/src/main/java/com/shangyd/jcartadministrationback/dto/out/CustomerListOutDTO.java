@@ -5,24 +5,12 @@ import java.util.Date;
 public class CustomerListOutDTO {
 
     private Integer customerId;
-
-    private String customerName;
-
+    private String username;
+    private String realName;
+    private String mobile;
     private String email;
-
     private Byte status;
-
-    private Date createTime;
-
-    private Date uploadTime;
-
-    public Date getUploadTime() {
-        return uploadTime;
-    }
-
-    public void setUploadTime(Date uploadTime) {
-        this.uploadTime = uploadTime;
-    }
+    private Long createTimestamp;
 
     public Integer getCustomerId() {
         return customerId;
@@ -32,12 +20,28 @@ public class CustomerListOutDTO {
         this.customerId = customerId;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getEmail() {
@@ -56,11 +60,11 @@ public class CustomerListOutDTO {
         this.status = status;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Long getCreateTimestamp() {
+        return createTimestamp;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
     }
 }
