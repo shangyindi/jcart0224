@@ -5,19 +5,15 @@ import java.util.Date;
 public class CustomerSearchInDTO {
     private Integer customerId;
 
-    private String customerName;
-
     private String email;
 
     private Byte status;
 
-    private Date createTime;
-
-    private Date uploadTime;
-
     private String userName;
 
     private String realName;
+
+    private String mobile;
 
     public String getUserName() {
         return userName;
@@ -43,14 +39,6 @@ public class CustomerSearchInDTO {
         this.customerId = customerId;
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -67,19 +55,11 @@ public class CustomerSearchInDTO {
         this.status = status;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUploadTime() {
-        return uploadTime;
-    }
-
-    public void setUploadTime(Date uploadTime) {
-        this.uploadTime = uploadTime;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }

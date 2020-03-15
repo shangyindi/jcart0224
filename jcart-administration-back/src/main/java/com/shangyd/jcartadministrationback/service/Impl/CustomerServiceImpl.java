@@ -19,9 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Page<Customer> search(CustomerSearchInDTO customerSearchInDTO, Integer pageNum) {
         PageHelper.startPage(1,10);
-        Page<Customer> page = customerMapper.search(
-                customerSearchInDTO.getUserName(),
-        );
-        return null;
+        Page<Customer> page = customerMapper.search();
+        return page;
     }
 }
