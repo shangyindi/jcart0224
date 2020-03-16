@@ -2,6 +2,7 @@ package com.shangyd.jcartadministrationback.controller;
 
 import com.github.pagehelper.Page;
 import com.shangyd.jcartadministrationback.dto.in.CustomerSearchInDTO;
+import com.shangyd.jcartadministrationback.dto.in.CustomerSetStatusInDTO;
 import com.shangyd.jcartadministrationback.dto.out.CustomerListOutDTO;
 import com.shangyd.jcartadministrationback.dto.out.CustomerShowOutDTO;
 import com.shangyd.jcartadministrationback.dto.out.PageOutDTO;
@@ -73,5 +74,10 @@ public class CustomerController {
             customerShowOutDTO.setDefaultAddress(address.getContent());
         }
         return customerShowOutDTO;
+    }
+
+    @PostMapping("/setStatus")
+    public void  setStatus(@RequestBody CustomerSetStatusInDTO customerSetStatusInDTO){
+        customerService.setStatus(customerSetStatusInDTO);
     }
 }
