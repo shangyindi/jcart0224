@@ -22,4 +22,9 @@ public class CustomerServiceImpl implements CustomerService {
         Page<Customer> page = customerMapper.search();
         return page;
     }
+
+    @Override
+    public Customer getById(Integer customerId) {
+        return customerMapper.selectByPrimaryKey(customerId);
+    }
 }
