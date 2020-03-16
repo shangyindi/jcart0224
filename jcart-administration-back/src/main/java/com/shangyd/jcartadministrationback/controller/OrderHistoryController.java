@@ -1,12 +1,9 @@
 package com.shangyd.jcartadministrationback.controller;
 
+import com.shangyd.jcartadministrationback.dto.in.OrderHistoryCreateInDTO;
 import com.shangyd.jcartadministrationback.service.OrderHistoryService;
-import com.shangyd.jcartadministrationback.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/orderHistory")
@@ -17,7 +14,8 @@ public class OrderHistoryController {
     private OrderHistoryService orderHistoryService;
 
     @PostMapping("/create")
-    public void create(){
-
+    public Long create(@RequestBody OrderHistoryCreateInDTO orderHistoryCreateInDTO){
+        Long orderHistoryId = orderHistoryService.create(orderHistoryCreateInDTO);
+        return orderHistoryId;
     }
 }
