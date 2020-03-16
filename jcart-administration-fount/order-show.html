@@ -36,15 +36,24 @@
       </el-table-column>
       <el-table-column prop="quantity" label="商品数量" width="150">
       </el-table-column>
-      <el-table-column prop="unitPrice" label="商品单价" width="150">
+      <el-table-column prop="unitPrice"  label="商品单价" width="150">
+        <template slot-scope="scope">
+          {{(scope.row.unitPrice).toFixed(2)}}
+      </template>
       </el-table-column>
       <el-table-column prop="totalPrice" label="总价" width="150">
+        <template slot-scope="scope">
+          {{(scope.row.totalPrice).toFixed(2)}}
+      </template>
       </el-table-column>
       <el-table-column prop="unitRewordPoints" label="商品积分" width="150">
       </el-table-column>
       <el-table-column prop="totalRewordPoints" label="总积分" width="150">
       </el-table-column>
     </el-table>
+    <el-button type="primary">添加到订单历史</el-button>
+    <el-divider>订单历史</el-divider>    
+    
   </div>
   <script src="assets/js/axios.min.js"></script>
   <script src="assets/js/common.js"></script>
