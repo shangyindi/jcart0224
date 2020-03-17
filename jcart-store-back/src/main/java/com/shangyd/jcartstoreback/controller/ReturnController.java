@@ -1,6 +1,9 @@
 package com.shangyd.jcartstoreback.controller;
 
+import com.github.pagehelper.Page;
 import com.shangyd.jcartstoreback.dto.in.ReturnApplyInDTO;
+import com.shangyd.jcartstoreback.dto.out.PageOutDTO;
+import com.shangyd.jcartstoreback.dto.out.ReturnListOutDTO;
 import com.shangyd.jcartstoreback.eunm.ReturnStatus;
 import com.shangyd.jcartstoreback.po.Return;
 import com.shangyd.jcartstoreback.service.ReturnService;
@@ -8,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/return")
@@ -42,4 +47,24 @@ public class ReturnController {
         return returnId;
     }
 
+    @GetMapping("/getList")
+    public PageOutDTO<ReturnListOutDTO> getList(@RequestAttribute Integer customerId, @RequestParam(required = false, defaultValue = "1") Integer pageNum){
+        Page<Return> page = returnService.getPageByCustomerId(customerId,pageNum);
+        List<ReturnListOutDTO> returnListOutDTOS = page.stream().map(aReturn -> {
+            ReturnListOutDTO returnListOutDTO = new ReturnListOutDTO();
+            returnListOutDTO.setCustomerId(aReturn.getCustomerId());
+            returnListOutDTO.setCreateTime(aReturn.getCreateTime().getTime());
+            returnListOutDTO.setCustomerName(aReturn.getCustomerName());
+            returnListOutDTO.setReturnId(aReturn.getReturnId());
+            returnListOutDTO.setOrderId(aReturn.getOrderId());
+            returnListOutDTO.setStatus(aReturn.getStatus());
+            return returnListOutDTO;
+        }).collect(Collectors.toList());
+        PageOutDTO<ReturnListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(returnListOutDTOS);
+        return pageOutDTO;
+    }
 }

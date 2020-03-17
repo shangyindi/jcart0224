@@ -26,7 +26,7 @@
     update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from jcart_return
     where return_id = #{returnId,jdbcType=INTEGER}
@@ -232,4 +232,10 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where return_id = #{returnId,jdbcType=INTEGER}
   </update>
+  <select id="getPageByCustomerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jcart_return
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
 </mapper>

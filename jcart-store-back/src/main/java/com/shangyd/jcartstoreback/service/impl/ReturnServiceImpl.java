@@ -1,5 +1,7 @@
 package com.shangyd.jcartstoreback.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.shangyd.jcartstoreback.dao.ReturnMapper;
 import com.shangyd.jcartstoreback.po.Return;
 import com.shangyd.jcartstoreback.service.ReturnService;
@@ -16,5 +18,12 @@ public class ReturnServiceImpl implements ReturnService {
     @Override
     public void create(Return returned) {
         returnMapper.insertSelective(returned);
+    }
+
+    @Override
+    public Page<Return> getPageByCustomerId(Integer customerId, Integer pageNum) {
+        PageHelper.startPage(pageNum,10);
+        Page<Return> page = returnMapper.getPageByCustomerId(customerId);
+        return page;
     }
 }
