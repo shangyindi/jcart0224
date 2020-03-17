@@ -36,24 +36,48 @@
       </el-table-column>
       <el-table-column prop="quantity" label="商品数量" width="150">
       </el-table-column>
-      <el-table-column prop="unitPrice"  label="商品单价" width="150">
+      <el-table-column prop="unitPrice" label="商品单价" width="150">
         <template slot-scope="scope">
           {{(scope.row.unitPrice).toFixed(2)}}
-      </template>
+        </template>
       </el-table-column>
       <el-table-column prop="totalPrice" label="总价" width="150">
         <template slot-scope="scope">
           {{(scope.row.totalPrice).toFixed(2)}}
-      </template>
+        </template>
       </el-table-column>
       <el-table-column prop="unitRewordPoints" label="商品积分" width="150">
       </el-table-column>
       <el-table-column prop="totalRewordPoints" label="总积分" width="150">
       </el-table-column>
     </el-table>
-    <el-button type="primary">添加到订单历史</el-button>
-    <el-divider>订单历史</el-divider>    
-    
+    <el-select v-model="selectStatus" placeholder="请选择订单状态">
+      <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select>
+    <el-switch v-model="customerNotified" active-color="#13ce66" inactive-color="#ff4949">
+    </el-switch>
+    <el-button type="primary" @Click="addOrderHistory">添加到订单历史</el-button>
+    <el-divider>订单历史</el-divider>
+     <el-table :data="orderHistory" style="width: 100%">
+      <el-table-column label="时间" width="180">
+        <template slot-scope="scope">
+          {{(new Date(scope.row.timestamp)).toLocaleString()}}
+        </template>
+      </el-table-column>
+      <el-table-column prop="comment" label="备注" width="120">
+      </el-table-column>
+      <el-table-column label="状态" width="120">
+        <template slot-scope="scope">
+          {{statuses[scope.row.orderStatus].label}}
+        </template>
+      </el-table-column>
+      <el-table-column label="通知客户" width="120">
+        <template slot-scope="scope">
+          <span v-if="scope.row.customerNotified">是</span><span v-else>否</span> <br>
+      </template>
+      </el-table-column>
+    </el-table>
   </div>
   <script src="assets/js/axios.min.js"></script>
   <script src="assets/js/common.js"></script>

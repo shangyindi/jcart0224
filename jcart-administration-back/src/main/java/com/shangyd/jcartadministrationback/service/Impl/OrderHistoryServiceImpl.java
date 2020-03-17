@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class OrderHistoryServiceImpl implements OrderHistoryService {
@@ -29,5 +30,11 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
         orderHistoryMapper.insertSelective(orderHistory);
         Long orderHistoryId = orderHistory.getOrderHistoryId();
         return orderHistoryId;
+    }
+
+    @Override
+    public List<OrderHistory> getByOrderList(Long orderId) {
+        List<OrderHistory>  orderHistory = orderHistoryMapper.selectByPrimaryKey(orderId);
+        return orderHistory;
     }
 }

@@ -3,6 +3,8 @@ package com.shangyd.jcartadministrationback.dao;
 import com.shangyd.jcartadministrationback.po.OrderHistory;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface OrderHistoryMapper {
     int deleteByPrimaryKey(Long orderHistoryId);
@@ -11,7 +13,7 @@ public interface OrderHistoryMapper {
 
     int insertSelective(OrderHistory record);
 
-    OrderHistory selectByPrimaryKey(Long orderHistoryId);
+    List<OrderHistory> selectByPrimaryKey(Long orderHistoryId);
 
     int updateByPrimaryKeySelective(OrderHistory record);
 

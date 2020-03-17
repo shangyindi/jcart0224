@@ -48,7 +48,25 @@ var app = new Vue({
         orderProducts:[],
         shipAddress:'',
         shipPrice:'',
-        comment:''
+        comment:'',
+        orderHistory:[],
+        selectStatus:'',
+        statuses:[
+            {
+                value: 0,
+                label: '待处理'
+              }, {
+                value: 1,
+                label: '已发货'
+              }, {
+                value: 2,
+                label: '待收货'
+              }, {
+                value: 4,
+                label: '处理中'
+              }
+        ],
+        customerNotified:false
     },
     mounted(){
         console.log('view mounted');
@@ -60,6 +78,7 @@ var app = new Vue({
         }
         //进行赋值
         this.getByOrder();
+        this.getOrderHistory();
     },
     methods:{
         getByOrder(){
@@ -82,6 +101,31 @@ var app = new Vue({
             }).catch(function (error) {
                 console.log(error);    
             })    
+        },
+        getOrderHistory(){
+            axios.get('/orderHistory/getByOrderList',{
+                params:{
+                    orderId:this.orderId
+                }
+            }).then(function (response) {
+                console.log(response)
+                app.orderHistory = response.data;
+            }).catch(function (error) {
+                console.log(error)
+            })
+        },
+        addOrderHistory(){
+            axios.post('/orderHistory/create',{
+                orderId:this.orderId,
+                orderStatus:this.selectStatus,
+                comment:this.comment,
+                customerNotified:this.customerNotified
+            }).then(function (response) {
+                console.log(response) 
+                alert('添加订单历史成功');   
+            }).catch(function (error) {
+                console.log(error)
+            })
         }
     }
 })
