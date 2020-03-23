@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.shangyd.jcartstoreback.dto.in.ReturnApplyInDTO;
 import com.shangyd.jcartstoreback.dto.out.PageOutDTO;
 import com.shangyd.jcartstoreback.dto.out.ReturnListOutDTO;
+import com.shangyd.jcartstoreback.dto.out.ReturnShowOutDTO;
 import com.shangyd.jcartstoreback.eunm.ReturnStatus;
 import com.shangyd.jcartstoreback.po.Return;
 import com.shangyd.jcartstoreback.service.ReturnService;
@@ -66,5 +67,28 @@ public class ReturnController {
         pageOutDTO.setPageNum(page.getPageNum());
         pageOutDTO.setList(returnListOutDTOS);
         return pageOutDTO;
+    }
+
+    @GetMapping("/getById")
+    public ReturnShowOutDTO getById(@RequestParam("returnId") Integer returnId){
+        Return aReturn = returnService.getById(returnId);
+        ReturnShowOutDTO showOutDTO = new ReturnShowOutDTO();
+        showOutDTO.setAction(aReturn.getAction());
+        showOutDTO.setComment(aReturn.getComment());
+        showOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
+        showOutDTO.setUpdateTimestamp(aReturn.getUpdateTime().getTime());
+        showOutDTO.setOrderTimestamp(aReturn.getOrderTime().getTime());
+        showOutDTO.setOpened(aReturn.getOpened());
+        showOutDTO.setReason(aReturn.getReason());
+        showOutDTO.setReturnId(aReturn.getReturnId());
+        showOutDTO.setCustomerName(aReturn.getCustomerName());
+        showOutDTO.setEmail(aReturn.getEmail());
+        showOutDTO.setQuantity(aReturn.getQuantity());
+        showOutDTO.setProductName(aReturn.getProductName());
+        showOutDTO.setOrderId(aReturn.getOrderId());
+        showOutDTO.setProductCode(aReturn.getProductCode());
+        showOutDTO.setStatus(aReturn.getStatus());
+        showOutDTO.setMobile(aReturn.getMobile());
+        return showOutDTO;
     }
 }

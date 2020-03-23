@@ -7,4 +7,6 @@ public interface ReturnService {
     void create(Return returned);
 
     Page<Return> getPageByCustomerId(Integer customerId, Integer pageNum);
+
+    Return getById(Integer returnId);
 }
